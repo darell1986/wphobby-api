@@ -19,15 +19,15 @@ function run(category, keyword) {
 
 };
 
-app.get('/api/products/:category/:keyword', (req, res) => {
-    result = run(req.params.category, req.params.keyword);
-	res.send(result);
+// app.get('/api/products/:category/:keyword', (req, res) => {
+//     result = run(req.params.category, req.params.keyword);
+// 	res.send(result);
 
-});
+// });
 
-function search() {
+function search(category, keyword) {
 
-    const url = 'https://www.aliexpress.com/wholesale?catId=0&SearchText=xiaomi';
+    const url = 'https://www.aliexpress.com/wholesale?catId=' + category + '&SearchText='+ keyword;
 
 	request(url, function (error, response, body) {
     	if (!error && response.statusCode === 200) {
@@ -39,8 +39,8 @@ function search() {
 
 };
 
-app.get('/', (req, res) => {
-    result = search();
+app.get('/api/products/:category/:keyword', (req, res) => {
+    result = search(req.params.category, req.params.keyword);
 	res.send(result);
 
 });
