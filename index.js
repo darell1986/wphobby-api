@@ -25,4 +25,24 @@ app.get('/api/products/:category/:keyword', (req, res) => {
 
 });
 
+function search() {
+
+    const url = 'https://www.aliexpress.com/wholesale?catId=0&SearchText=xiaomi';
+
+	request(url, function (error, response, body) {
+    	if (!error && response.statusCode === 200) {
+        	innerText = body;
+     	}
+	});
+
+    return innerText;
+
+};
+
+app.get('/', (req, res) => {
+    result = search();
+	res.send(result);
+
+});
+
 app.listen(port, () => console.log(`wphobby-api app listening on port ${port}!`))
