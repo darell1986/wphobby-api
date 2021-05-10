@@ -26,4 +26,4 @@ app.get('/api/products/:category/:keyword', (req, res) => {
 
 });
 
-app.listen(port, () => console.log(`sample-expressjs app listening on port ${port}!`))
+app.listen(port, () => console.log(`wphobby-api app listening on port ${port}!`))
